@@ -17,7 +17,13 @@ Write summary of your project, which consist of Introduction, Methods, Results, 
    without this being correct, the program would fail. I coded this project on a Google Colab notebook, which allowed me to have cells of code instead of one huge 
    chunk of code that would be difficult to interpret and find errors in. While working on this project, if a cell gets an error message, then I would fix it
    immediately until it works. Hence, the first part of the prototype's evaluation is done during the making of it and can be assumed to be done when the project is
-   done. The second part is testing the final model. This is done in the last part of the code. I had 
+   done. The second part is testing the final model. This is done in the last part of the code. I had cells of code that are designed to take an input image from the
+   testing data and let it label the image with a decimal from 0 until 1. The closer it is to 0, the more confident it is that it is a normal cell, and the closer it
+   is to 1, the more confident it is that it is a Leukemia cell. An output that ranges at around 0.45-0.65 is not desirable because that shows that the model is very
+   unsure. It is more desirable to have an output of 0 < output < 0.2 and 0.8 < output < 1.0 because that shows that the model is confident in its answer. While doing
+   this testing phase, I unfortunately found that the model shows signs of being unsure of some input images. Some images are classified with a high confidence rate,
+   but there are still a considerable number of times when the model outputs a value in the range of 0.45-0.65. Of course, that range is something that I decided on my
+   own, solely based on the fact that the possible output is a sliding scale between 0 and 1, and being around the middle of that range dictates a sense of confusion.
    
 4. Acute lymphoblastic leukemia is a type of blood cell cancer that can affect both children and adults. In order to get the most effective treatment, the patient 
    needs early diagnosis. My motivation to go in this direction stemmed from the paper that was first proposed to me. That paper was about the integration of NLP2FHIR
@@ -32,5 +38,16 @@ Write summary of your project, which consist of Introduction, Methods, Results, 
    testing, training, and validation folders. I did not utilize every piece of data to train the model to decrease training time and the computational power that was
    required to test that much data. In my project, I set aside around 2200 data for each class. I prepared the images by scaling them to 256x256 before then building
    a CNN model using the Sequential model from Tensorflow. This CNN structure has 3 convolutional layers and 2 max pooling layers, with a dropout function after each
-   pooling layer to avoid overfitting.
+   pooling layer to avoid overfitting. Finally, there is the fully connected and softmax layer.
    
+   The accuracy of this model peaked at 83.5% and the training performs relatively well. However, the validation accuracy averages at about 60%, which is not very 
+   ideal. The validation loss, in comparison, is higher. This depicts a model that has much to improve. Overall, the model can predict normal cells accurately, but 
+   has a hard time recognizing leukemia cells. This is very much not ideal, as I mentioned earlier, it is better to have a false alarm for Leukemia than it is to miss
+   a potentially cancerous Leukemia cell that was labeled as normal by the model. Some images are classified with a high confidence rate, but there are still a 
+   considerable number of times when the model outputs a value in the range of 0.45-0.65. Improvements can possibly be made by doing more epochs and tweaking 
+   hyperparameters.
+   
+   References:
+   https://www.kaggle.com/datasets/andrewmvd/leukemia-classification
+   https://www.researchgate.net/publication/324746753_Leukemia_Blood_Cell_Image_Classification_Using_Convolutional_Neural_Network
+   https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8378603/
