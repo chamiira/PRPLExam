@@ -2,3 +2,35 @@ Describe your software design in detail.
 Explain your software source code in your github repository.
 Describe your software prototype evaluation in detail.
 Write summary of your project, which consist of Introduction, Methods, Results, Discussion, and References.
+
+
+
+1. The current software is a classification model based on a CNN architecture. Its purpose is to take an image input of a cell and process it before determining if it
+   is a normal cell or a Leukemia cell. The purpose of this software is to aid medical professionals with an automated way of processing blood cell images. It is much
+   more important for the model to detect Leukemia cells than normal cells. In a medical setting, it is better to have a false alarm for Leukemia than it is to miss
+   a potentially cancerous Leukemia cell that was labeled as normal by the model.
+
+2. The general flow of the code is at its core a CNN model that is being set up and trained. The source code is placed in the SourceCode.py file in this repository. 
+   It has a comment for every step of the process so that other users may understand it, so please look at that file for my answers to the 2nd question.
+   
+3. I applied two main things for the prototype evaluation: testing each cell of code and testing the final model. To test each cell of code is relatively simple, as
+   without this being correct, the program would fail. I coded this project on a Google Colab notebook, which allowed me to have cells of code instead of one huge 
+   chunk of code that would be difficult to interpret and find errors in. While working on this project, if a cell gets an error message, then I would fix it
+   immediately until it works. Hence, the first part of the prototype's evaluation is done during the making of it and can be assumed to be done when the project is
+   done. The second part is testing the final model. This is done in the last part of the code. I had 
+   
+4. Acute lymphoblastic leukemia is a type of blood cell cancer that can affect both children and adults. In order to get the most effective treatment, the patient 
+   needs early diagnosis. My motivation to go in this direction stemmed from the paper that was first proposed to me. That paper was about the integration of NLP2FHIR
+   for diagnosing obestiy patients. Although that paper is extremely interesting, it was not possible for me to retrieve the dataset used in that paper, and it was also
+   not possible for me to apply all of the models that they developed for the paper. Hence, I decided to decrease my scope, but still work on a project that would
+   benefit the medical field. The aim of this project is to implement the CNN structure to a Leukemia dataset in order to find ways to explore and aid the medical field 
+   with state-of-the-art software. Due to this, the intended audience of said software are professionals of the medical field, and the final software is intended to be 
+   used as a tool of medical analysis for patients suspected of Leukemia.
+   
+   The method that I will be using is applying Convolutional Neural Networks for a classification problem. Firstly, I had to search and prepare for the dataset. The
+   dataset that I used consists of over 15000 images, divided into two classes: normal cells and acute lymphoblastic leukemia cells. This dataset has been divided into 
+   testing, training, and validation folders. I did not utilize every piece of data to train the model to decrease training time and the computational power that was
+   required to test that much data. In my project, I set aside around 2200 data for each class. I prepared the images by scaling them to 256x256 before then building
+   a CNN model using the Sequential model from Tensorflow. This CNN structure has 3 convolutional layers and 2 max pooling layers, with a dropout function after each
+   pooling layer to avoid overfitting.
+   
